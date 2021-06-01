@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-example-biz-a/spring-cloud-example-biz-a.iml" filepath="$PROJECT_DIR$/spring-cloud-example-biz-a/spring-cloud-example-biz-a.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-example-biz-b/spring-cloud-example-biz-b.iml" filepath="$PROJECT_DIR$/spring-cloud-example-biz-b/spring-cloud-example-biz-b.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-example-config/spring-cloud-example-config.iml" filepath="$PROJECT_DIR$/spring-cloud-example-config/spring-cloud-example-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-example-gateway/spring-cloud-example-gateway.iml" filepath="$PROJECT_DIR$/spring-cloud-example-gateway/spring-cloud-example-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-example-registry/spring-cloud-example-registry.iml" filepath="$PROJECT_DIR$/spring-cloud-example-registry/spring-cloud-example-registry.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-examples.iml" filepath="$PROJECT_DIR$/spring-cloud-examples.iml" />
+    </modules>
+  </component>
+</project>

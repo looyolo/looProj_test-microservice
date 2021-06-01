@@ -4,29 +4,40 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <!-- 父依赖，继承 SpringBoot 父项目，注意与 SpringCloud 版本的匹配 -->
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <!-- 项目 基本信息 -->
     <groupId>com.example</groupId>
     <artifactId>microservice-springcloud</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>microservice-springcloud</name>
     <packaging>pom</packaging>
 
+    <modules>
+        <!-- 项目 所包含的 子模块 -->
+        <module>microservice-eureka-server</module>
+        <module>microservice-eureka-user</module>
+        <module>microservice-eureka-order</module>
+    </modules>
+
     <properties>
+        <!-- java 版本和 编码 -->
         <java.version>1.8</java.version>
-        <spring-cloud.version>2020.0.3-SNAPSHOT</spring-cloud.version>
-        <spring-native.version>0.10.0-SNAPSHOT</spring-native.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- SpringBoot 与 SpringCloud 的版本匹配 -->
+        <spring-cloud.version>2020.0.3-SNAPSHOT</spring-cloud.version>
+        <spring-native.version>0.10.0-SNAPSHOT</spring-native.version>
     </properties>
 
     <dependencyManagement>
-        <!-- spring cloud 版本依赖配置 -->
         <dependencies>
+            <!-- spring cloud 版本依赖配置 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -40,20 +51,39 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
             <version>5.3.7</version>
         </dependency>
+        <!-- 负责在 spring 框架中实现事务管理功能。以 aop 切面的方式将事务注入到业务代码中，并实现不同类型的事务管理器 -->
+        <!--   必须与 spring-aop 版本保持一致 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <scope>test</scope>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.3.7</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -66,55 +96,18 @@
             <scope>test</scope>
         </dependency>
 
-        <!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-function-context</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
-<!--        </dependency>-->
+        <!-- lombok 代码简化生成插件 有啥好？SpringBoot 和 IDEA 官方都要支持它！ -->
+        <!-- 基本使用教程，请参阅 https://blog.csdn.net/qq_15736701/article/details/117419167 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.cloud</groupId>-->
-<!--            <artifactId>spring-cloud-starter-task</artifactId>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.experimental</groupId>-->
-<!--            <artifactId>spring-native</artifactId>-->
-<!--            <version>${spring-native.version}</version>-->
-<!--        </dependency>-->
-
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <scope>runtime</scope>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.projectlombok</groupId>-->
-<!--            <artifactId>lombok</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-test</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
     </dependencies>
 
     <build>
         <plugins>
-            <!-- spring boot 的编译插件 -->
+            <!-- spring boot 的编译插件，可以将项目打包成一个可执行 jar  -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -148,6 +141,7 @@
             </plugin>
         </plugins>
     </build>
+
     <repositories>
         <repository>
             <id>spring-snapshots</id>

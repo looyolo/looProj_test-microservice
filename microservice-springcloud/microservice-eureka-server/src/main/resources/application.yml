@@ -1,13 +1,14 @@
 
 server:
-  port: 8761
+  port: 18761    # 指定该 eureka 实例的端口号
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: hp
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone:
-        "https://${eureka.instance.hostname}:${server.port}/eureka/"
+      defaultZone: "http://${eureka.instance.hostname}:${server.port}/eureka/"    # 指定 eureka 服务端访问地址
+  server:
+    enable-self-preservation: false    # 关闭 服务端的自我保护机制

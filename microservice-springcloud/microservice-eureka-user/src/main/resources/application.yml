@@ -1,0 +1,14 @@
+
+server:
+  port: 18000    # 指定该 eureka 实例的端口号
+
+eureka:
+  instance:
+    prefer-ip-address: true    # 显示主机的 ip
+  client:
+    service-url:
+      defaultZone: http://hp:18761/eureka/    # 指定 eureka 服务端访问地址，即 服务注册中心
+
+spring:
+  application:
+    name: microservice-eureka-user    # 指定应用名称
